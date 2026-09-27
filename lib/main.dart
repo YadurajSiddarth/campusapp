@@ -400,8 +400,11 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                         'Cafeteria',
                         'Food and refreshments on campus',
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Campus Cafeteria')),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CafeteriaScreen(),
+                            ),
                           );
                         },
                       ),
@@ -413,8 +416,11 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                         'Sports',
                         'Sports facilities and activities',
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Campus Sports')),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SportsScreen(),
+                            ),
                           );
                         },
                       ),
@@ -426,9 +432,10 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                         'Health',
                         'Campus health and support',
                         onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Campus Health Support'),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HealthScreen(),
                             ),
                           );
                         },
@@ -630,8 +637,9 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
   }) {
     return SizedBox(
       width: 260,
-      child: GestureDetector(
+      child: InkWell(
         onTap: onTap,
+        borderRadius: BorderRadius.circular(18),
         child: Card(
           clipBehavior: Clip.antiAlias,
           elevation: 3,
@@ -762,11 +770,431 @@ class LibraryScreen extends StatelessWidget {
         title: const Text('Library'),
         backgroundColor: const Color.fromARGB(252, 212, 221, 238),
       ),
-      body: const Center(
-        child: Text(
-          'Welcome to the Campus Library',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/library.jpg',
+              height: 220,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          const SizedBox(height: 24),
+
+          Text(
+            'Campus Library',
+            style: GoogleFonts.poppins(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          const SizedBox(height: 8),
+
+          Text(
+            'Books, study spaces and learning resources for students.',
+            style: GoogleFonts.openSans(fontSize: 16),
+          ),
+          const SizedBox(height: 20),
+
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Search books or resources',
+              prefixIcon: const Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 24),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.menu_book),
+              title: const Text('Books & Resources'),
+              subtitle: const Text('Access books and academic resources.'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Books & Resources selected')),
+                );
+              },
+            ),
+          ),
+
+          const SizedBox(height: 12),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.school),
+              title: const Text('Study Spaces'),
+              subtitle: const Text('Find a quiet place for studying.'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Study Spaces selected')),
+                );
+              },
+            ),
+          ),
+
+          const SizedBox(height: 12),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.access_time),
+              title: const Text('Library Hours'),
+              subtitle: const Text(
+                'Check the library opening and closing hours.',
+              ),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Library Hours selected')),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CafeteriaScreen extends StatelessWidget {
+  const CafeteriaScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Cafeteria'),
+        backgroundColor: const Color.fromARGB(252, 212, 221, 238),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/cafeteria.jpg',
+              height: 220,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Text(
+            'Campus Cafeteria',
+            style: GoogleFonts.poppins(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          const SizedBox(height: 24),
+
+          Text(
+            'Today\'s Menu',
+            style: GoogleFonts.poppins(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          const SizedBox(height: 12),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.restaurant),
+              title: const Text('Breakfast'),
+              subtitle: const Text('Available from 7:30 AM'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.lunch_dining),
+              title: const Text('Lunch'),
+              subtitle: const Text('Available from 12:00 PM'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.local_cafe),
+              title: const Text('Snacks & Drinks'),
+              subtitle: const Text('Available throughout the day'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SportsScreen extends StatelessWidget {
+  const SportsScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sports'),
+        backgroundColor: const Color.fromARGB(252, 212, 221, 238),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/sports.jpg',
+              height: 220,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Text(
+            'Campus Sports',
+            style: GoogleFonts.poppins(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.sports_soccer),
+              title: const Text('Football Ground'),
+              subtitle: const Text('Outdoor football facility'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FootballScreen(),
+                  ),
+                );
+              },
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.sports_cricket),
+              title: const Text('Cricket Ground'),
+              subtitle: const Text('Cricket ground and practice area'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.sports_basketball),
+              title: const Text('Basketball Court'),
+              subtitle: const Text('Outdoor basketball facility'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.sports_tennis),
+              title: const Text('Tennis Court'),
+              subtitle: const Text('Tennis facility for students'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.pool),
+              title: const Text('Swimming Pool'),
+              subtitle: const Text('Swimming and aquatic activities'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.directions_run),
+              title: const Text('Athletics Ground'),
+              subtitle: const Text('Running track and athletics facilities'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.sports),
+              title: const Text('Badminton Court'),
+              subtitle: const Text('Indoor badminton facility'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.sports_volleyball),
+              title: const Text('Volleyball Court'),
+              subtitle: const Text('Volleyball facility for students'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.table_bar),
+              title: const Text('Table Tennis'),
+              subtitle: const Text('Indoor table tennis facility'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.fitness_center),
+              title: const Text('Fitness & Indoor Sports'),
+              subtitle: const Text('Gym and indoor recreational activities'),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FootballScreen extends StatelessWidget {
+  const FootballScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Football Ground')),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/footg.jpg',
+              height: 220,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          const SizedBox(height: 24),
+
+          Text(
+            'Football Ground',
+            style: GoogleFonts.poppins(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Text(
+            'Outdoor football facility available for students, training sessions and campus activities.',
+            style: GoogleFonts.openSans(fontSize: 16),
+          ),
+
+          const SizedBox(height: 24),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.access_time),
+              title: const Text('Opening Hours'),
+              subtitle: const Text('6:00 AM – 9:00 PM'),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.location_on),
+              title: const Text('Location'),
+              subtitle: const Text('Campus Sports Complex'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class HealthScreen extends StatelessWidget {
+  const HealthScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Health'),
+        backgroundColor: const Color.fromARGB(252, 212, 221, 238),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/health.jpg',
+              height: 220,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Text(
+            'Campus Health Support',
+            style: GoogleFonts.poppins(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Health services and support available for students on campus.',
+            style: GoogleFonts.openSans(fontSize: 16),
+          ),
+        ],
       ),
     );
   }
