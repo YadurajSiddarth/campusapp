@@ -383,6 +383,14 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                         'assets/images/library.jpg',
                         'Library',
                         'Books, study spaces and resources',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LibraryScreen(),
+                            ),
+                          );
+                        },
                       ),
 
                       const SizedBox(width: 16),
@@ -391,6 +399,11 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                         'assets/images/cafeteria.jpg',
                         'Cafeteria',
                         'Food and refreshments on campus',
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Campus Cafeteria')),
+                          );
+                        },
                       ),
 
                       const SizedBox(width: 16),
@@ -399,6 +412,11 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                         'assets/images/spo.jpg',
                         'Sports',
                         'Sports facilities and activities',
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Campus Sports')),
+                          );
+                        },
                       ),
 
                       const SizedBox(width: 16),
@@ -407,6 +425,13 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                         'assets/images/health.jpg',
                         'Health',
                         'Campus health and support',
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Campus Health Support'),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -597,43 +622,53 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
     );
   }
 
-  Widget _buildServiceCard(String imagePath, String title, String description) {
+  Widget _buildServiceCard(
+    String imagePath,
+    String title,
+    String description, {
+    VoidCallback? onTap,
+  }) {
     return SizedBox(
       width: 260,
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              imagePath,
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  const SizedBox(height: 6),
-
-                  Text(description, style: GoogleFonts.openSans(fontSize: 13)),
-                ],
+      child: GestureDetector(
+        onTap: onTap,
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                imagePath,
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      description,
+                      style: GoogleFonts.openSans(fontSize: 13),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
