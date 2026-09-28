@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 20),
-                Image.asset('assets/images/cmrl.png', height: 50),
+                Image.asset('assets/images/cmrl.png', height: 60),
 
                 Container(
                   decoration: BoxDecoration(
@@ -53,10 +53,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       BoxShadow(
                         color: Colors.black.withOpacity(0.18),
                         blurRadius: 18,
-                        offset: const Offset(0, 8),
+                        offset: const Offset(10, 8),
                       ),
                     ],
                   ),
+
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24),
                     child: Stack(
@@ -267,7 +268,7 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
       backgroundColor: const Color.fromARGB(255, 240, 246, 247),
 
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 3, 1, 24),
+        backgroundColor: const Color.fromARGB(255, 243, 243, 246),
         elevation: 0,
         automaticallyImplyLeading: false,
 
@@ -294,16 +295,25 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
               ScaffoldMessenger.of(context)
                   .showSnackBar(const SnackBar(content: Text('Search')));
             },
-            icon: const Icon(Icons.search, color: Colors.white),
-            label: const Text('Search', style: TextStyle(color: Colors.white)),
+            icon: const Icon(
+              Icons.search,
+              color: Color.fromARGB(255, 2, 4, 40),
+            ),
+            label: const Text(
+              'Search',
+              style: TextStyle(color: Color.fromARGB(255, 2, 3, 37)),
+            ),
           ),
 
           TextButton.icon(
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
-            icon: const Icon(Icons.menu, color: Colors.white),
-            label: const Text('Menu', style: TextStyle(color: Colors.white)),
+            icon: const Icon(Icons.menu, color: Color.fromARGB(255, 7, 1, 37)),
+            label: const Text(
+              'Menu',
+              style: TextStyle(color: Color.fromARGB(255, 2, 3, 37)),
+            ),
           ),
 
           const SizedBox(width: 12),
@@ -558,62 +568,69 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                 ),
 
                 const SizedBox(height: 16),
-
-                ClipRRect(
+                InkWell(
                   borderRadius: BorderRadius.circular(20),
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        'assets/images/IISc.jpg',
-                        width: double.infinity,
-                        height: 220,
-                        fit: BoxFit.cover,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CampusHighlightsScreen(),
                       ),
-
-                      Container(
-                        width: double.infinity,
-                        height: 220,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.black.withOpacity(0.75),
+                    );
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          'assets/images/IISc.jpg',
+                          width: double.infinity,
+                          height: 220,
+                          fit: BoxFit.cover,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 220,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.transparent,
+                                Colors.black.withOpacity(0.75),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 20,
+                          right: 20,
+                          bottom: 20,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Life at CMR University',
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                'Discover campus life, events, clubs and student activities.',
+                                style: GoogleFonts.openSans(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
                             ],
                           ),
                         ),
-                      ),
-
-                      Positioned(
-                        left: 20,
-                        right: 20,
-                        bottom: 20,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Life at CMR University',
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-
-                            const SizedBox(height: 6),
-
-                            Text(
-                              'Discover campus life, events, clubs and student activities.',
-                              style: GoogleFonts.openSans(
-                                color: Colors.white,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
 
@@ -1611,6 +1628,62 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(height: 8),
           Text('Computer Science'),
           Text('Semester 5'),
+        ],
+      ),
+    );
+  }
+}
+
+class CampusHighlightsScreen extends StatelessWidget {
+  const CampusHighlightsScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Campus Highlights')),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/IISc.jpg',
+              width: double.infinity,
+              height: 250,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          const SizedBox(height: 24),
+
+          Text(
+            'Life at CMR University',
+            style: GoogleFonts.poppins(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          Text(
+            'Discover campus life, events, clubs and student activities.',
+            style: GoogleFonts.openSans(fontSize: 16, color: Colors.grey),
+          ),
+
+          const SizedBox(height: 28),
+
+          const Text(
+            'Campus Life',
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+
+          const SizedBox(height: 12),
+
+          const Text(
+            'Explore the university campus, student activities, academic spaces and the experiences that make campus life memorable.',
+            style: TextStyle(fontSize: 16, height: 1.5),
+          ),
         ],
       ),
     );
