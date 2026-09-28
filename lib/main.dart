@@ -30,6 +30,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController courseController = TextEditingController();
+  final TextEditingController semesterController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +73,30 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     labelText: 'Your Name',
                     prefixIcon: const Icon(Icons.person),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 18),
+
+                TextField(
+                  controller: courseController,
+                  decoration: InputDecoration(
+                    labelText: 'Course',
+                    prefixIcon: const Icon(Icons.school),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 18),
+
+                TextField(
+                  controller: semesterController,
+                  decoration: InputDecoration(
+                    labelText: 'Semester',
+                    prefixIcon: const Icon(Icons.calendar_month),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -142,6 +168,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
 class CampusHomeScreen extends StatefulWidget {
   final String userName;
+  final String course;
+  final String semester;
 
   const CampusHomeScreen({super.key, required this.userName});
 
