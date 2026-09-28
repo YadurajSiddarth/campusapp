@@ -43,9 +43,65 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
+                Image.asset('assets/images/cmrl.png', height: 50),
 
-                Icon(Icons.school, size: 80),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.18),
+                        blurRadius: 18,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(24),
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          'assets/images/campus.jpg',
+                          width: double.infinity,
+                          height: 220,
+                          fit: BoxFit.cover,
+                        ),
+
+                        Positioned.fill(
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Colors.transparent,
+                                  Colors.black.withOpacity(0.35),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        const Positioned(
+                          left: 20,
+                          bottom: 16,
+                          child: Text(
+                            'WELCOME TO CAMPUS',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.5,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 24),
 
                 const SizedBox(height: 24),
 
@@ -53,6 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   'CMR University Student Hub',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.cinzel(
+                    color: const Color.fromARGB(255, 1, 11, 63),
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                   ),
@@ -61,9 +118,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 8),
 
                 Text(
-                  'Your campus, personalized for you.',
+                  'Knowledge Breaks Barriers',
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.openSans(fontSize: 15),
+                  style: GoogleFonts.openSans(
+                    color: const Color.fromARGB(255, 1, 11, 63),
+                    fontSize: 15,
+                  ),
                 ),
 
                 const SizedBox(height: 45),
@@ -72,9 +132,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: nameController,
                   decoration: InputDecoration(
                     labelText: 'Your Name',
-                    prefixIcon: const Icon(Icons.person),
+
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
                 ),
@@ -84,9 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: courseController,
                   decoration: InputDecoration(
                     labelText: 'Course',
-                    prefixIcon: const Icon(Icons.school),
+
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
                 ),
@@ -96,9 +156,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: semesterController,
                   decoration: InputDecoration(
                     labelText: 'Semester',
-                    prefixIcon: const Icon(Icons.calendar_month),
+
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
                 ),
@@ -109,9 +169,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    prefixIcon: const Icon(Icons.lock),
+
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
                 ),
@@ -136,8 +196,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              CampusHomeScreen(userName: name),
+                          builder: (context) => CampusHomeScreen(
+                            userName: name,
+                            course: courseController.text.trim(),
+                            semester: semesterController.text.trim(),
+                          ),
                         ),
                       );
                     },
@@ -171,7 +234,12 @@ class CampusHomeScreen extends StatefulWidget {
   final String course;
   final String semester;
 
-  const CampusHomeScreen({super.key, required this.userName});
+  const CampusHomeScreen({
+    super.key,
+    required this.userName,
+    required this.course,
+    required this.semester,
+  });
 
   @override
   _CampusHomeScreenState createState() => _CampusHomeScreenState();
@@ -197,22 +265,48 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 246, 247),
+
       appBar: AppBar(
-        title: Text(
-          _appBarTitles[_selectedIndex],
-          style: GoogleFonts.cinzel(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        backgroundColor: const Color.fromARGB(251, 190, 199, 235),
+        backgroundColor: const Color.fromARGB(255, 3, 1, 24),
         elevation: 0,
+        automaticallyImplyLeading: false,
+
+        title: Row(
+          children: [
+            Image.asset('assets/images/cmrl.png', height: 42),
+
+            const SizedBox(width: 12),
+
+            Text(
+              '',
+              style: GoogleFonts.cinzel(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
+          TextButton.icon(
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('No new notifications')),
-              );
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(const SnackBar(content: Text('Search')));
             },
+            icon: const Icon(Icons.search, color: Colors.white),
+            label: const Text('Search', style: TextStyle(color: Colors.white)),
           ),
+
+          TextButton.icon(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: const Icon(Icons.menu, color: Colors.white),
+            label: const Text('Menu', style: TextStyle(color: Colors.white)),
+          ),
+
+          const SizedBox(width: 12),
         ],
       ),
       drawer: Drawer(
@@ -288,21 +382,21 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                       Positioned(
                         left: 24,
                         right: 24,
-                        bottom: 24,
+                        bottom: 18,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Welcome to CMR University',
+                              'CMR University',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 26,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const SizedBox(height: 8),
+                            const SizedBox(height: 0),
                             const Text(
-                              'Your campus, all in one place.',
+                              'Knowledge Breaks Barriers',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -323,15 +417,15 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 4),
-                const Text(
-                  'Computer Science • Semester 5',
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                Text(
+                  '${widget.course} • ${widget.semester}',
+                  style: const TextStyle(fontSize: 16, color: Colors.grey),
                 ),
                 const SizedBox(height: 24),
 
                 // Announcement
                 Card(
-                  color: const Color.fromARGB(255, 239, 230, 245),
+                  color: const Color.fromARGB(255, 245, 243, 246),
                   elevation: 2,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
