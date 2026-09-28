@@ -3,15 +3,147 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CampusHomeScreen(),
-    ),
+    const MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen()),
   );
 }
 
+class Student {
+  final String name;
+  final String studentId;
+  final String course;
+  final String semester;
+
+  const Student({
+    required this.name,
+    required this.studentId,
+    required this.course,
+    required this.semester,
+  });
+}
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController nameController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(28),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 40),
+
+                Icon(Icons.school, size: 80),
+
+                const SizedBox(height: 24),
+
+                Text(
+                  'CMR University Student Hub',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.cinzel(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+                const SizedBox(height: 8),
+
+                Text(
+                  'Your campus, personalized for you.',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.openSans(fontSize: 15),
+                ),
+
+                const SizedBox(height: 45),
+
+                TextField(
+                  controller: nameController,
+                  decoration: InputDecoration(
+                    labelText: 'Your Name',
+                    prefixIcon: const Icon(Icons.person),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 18),
+
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    prefixIcon: const Icon(Icons.lock),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 25),
+
+                SizedBox(
+                  height: 55,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      final name = nameController.text.trim();
+
+                      if (name.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please enter your name'),
+                          ),
+                        );
+                        return;
+                      }
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              CampusHomeScreen(userName: name),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'LOGIN',
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 18),
+
+                TextButton(
+                  onPressed: () {},
+                  child: const Text('Forgot password?'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class CampusHomeScreen extends StatefulWidget {
-  const CampusHomeScreen({Key? key}) : super(key: key);
+  final String userName;
+
+  const CampusHomeScreen({super.key, required this.userName});
 
   @override
   _CampusHomeScreenState createState() => _CampusHomeScreenState();
@@ -156,7 +288,7 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                 ),
                 const SizedBox(height: 24),
                 Text(
-                  'Welcome back, Raj!',
+                  'Welcome back, ${widget.userName}!',
                   style: GoogleFonts.cinzel(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
