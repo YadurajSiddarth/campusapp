@@ -7,6 +7,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       home: CampusHomeScreen(
         userName: 'Yaduraj Siddarth',
+        studentId: '24BBTCS307',
         course: 'Computer Science',
         semester: 'Semester 5',
       ),
@@ -28,6 +29,7 @@ class Student {
   });
 }
 
+/* 29th Sep by Raj Temporary removal of LoginScreen for testing purposes. Uncomment to enable login functionality.
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -206,6 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(
                           builder: (context) => CampusHomeScreen(
                             userName: name,
+                            studentId: studentIdController.text.trim(),
                             course: courseController.text.trim(),
                             semester: semesterController.text.trim(),
                           ),
@@ -236,15 +239,18 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+*/
 
 class CampusHomeScreen extends StatefulWidget {
   final String userName;
+  final String studentId;
   final String course;
   final String semester;
 
   const CampusHomeScreen({
     super.key,
     required this.userName,
+    required this.studentId,
     required this.course,
     required this.semester,
   });
@@ -433,11 +439,138 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+
+                const SizedBox(height: 6),
+
+                Text(
+                  widget.studentId,
+                  style: GoogleFonts.openSans(
+                    fontSize: 15,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+
                 const SizedBox(height: 4),
+
                 Text(
                   '${widget.course} • ${widget.semester}',
                   style: const TextStyle(fontSize: 16, color: Colors.grey),
                 ),
+                const SizedBox(height: 24),
+
+                Text(
+                  'Academic Snapshot',
+                  style: GoogleFonts.poppins(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: [
+                    Container(
+                      width: 160,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: Colors.blueGrey.shade100),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.15),
+                            blurRadius: 6,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.school, color: Colors.indigo),
+                          const SizedBox(height: 10),
+                          Text(
+                            '8.42',
+                            style: GoogleFonts.poppins(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Text('CGPA'),
+                        ],
+                      ),
+                    ),
+
+                    Container(
+                      width: 160,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: Colors.blueGrey.shade100),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.15),
+                            blurRadius: 6,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.percent, color: Colors.green),
+                          const SizedBox(height: 10),
+                          Text(
+                            '92%',
+                            style: GoogleFonts.poppins(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Text('Attendance'),
+                        ],
+                      ),
+                    ),
+
+                    Container(
+                      width: 160,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: Colors.blueGrey.shade100),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.15),
+                            blurRadius: 6,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.credit_score, color: Colors.orange),
+                          const SizedBox(height: 10),
+                          Text(
+                            '24',
+                            style: GoogleFonts.poppins(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Text('Credits'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+
                 const SizedBox(height: 24),
 
                 // Announcement
