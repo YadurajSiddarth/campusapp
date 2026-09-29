@@ -3,7 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(
-    const MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen()),
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: CampusHomeScreen(
+        userName: 'Yaduraj Siddarth',
+        course: 'Computer Science',
+        semester: 'Semester 5',
+      ),
+    ),
   );
 }
 
