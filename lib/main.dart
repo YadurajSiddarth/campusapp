@@ -1805,7 +1805,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 8),
 
             Text(
-              'Your academic space.',
+              'Dashboard.',
               style: GoogleFonts.poppins(
                 fontSize: 30,
                 fontWeight: FontWeight.w600,
@@ -1850,7 +1850,7 @@ class ProfileScreen extends StatelessWidget {
                         width: double.infinity,
                         height: 130,
                         decoration: BoxDecoration(
-                          color: Colors.red.shade800,
+                          color: const Color.fromARGB(255, 1, 3, 47),
                           borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(24),
                             topRight: Radius.circular(24),
@@ -1871,7 +1871,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           child: ClipOval(
                             child: Image.asset(
-                              'assets/images/profile.jpg',
+                              'assets/images/p.jpeg',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -1900,7 +1900,7 @@ class ProfileScreen extends StatelessWidget {
                                 style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.red.shade700,
+                                  color: const Color.fromARGB(255, 83, 5, 5),
                                 ),
                               ),
 
@@ -1956,7 +1956,7 @@ class ProfileScreen extends StatelessWidget {
                         Expanded(
                           child: _profileActionCard(
                             Icons.description_outlined,
-                            'Transcript',
+                            'Performance',
                             'Academic record',
                           ),
                         ),
@@ -2086,7 +2086,11 @@ class ProfileScreen extends StatelessWidget {
                 color: Colors.red.shade50,
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Icon(icon, color: Colors.red.shade700, size: 27),
+              child: Icon(
+                icon,
+                color: const Color.fromARGB(255, 4, 39, 109),
+                size: 27,
+              ),
             ),
 
             const SizedBox(width: 14),
@@ -2115,7 +2119,11 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
 
-            Icon(Icons.arrow_forward_ios, size: 15, color: Colors.red.shade700),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 15,
+              color: const Color.fromARGB(255, 73, 182, 232),
+            ),
           ],
         ),
       ),
