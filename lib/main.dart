@@ -369,368 +369,32 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
           ],
         ),
       ),
+      //372 to 971 was previous code now got shrinked to 372 to 919
+
       body: IndexedStack(
         index: _selectedIndex,
         children: [
           // TAB 0: HOME
-          SingleChildScrollView(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(24),
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        'assets/images/campus.jpg',
-                        width: double.infinity,
-                        height: 280,
-                        fit: BoxFit.cover,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 280,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.black.withOpacity(0.75),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 24,
-                        right: 24,
-                        bottom: 18,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'CMR University',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 26,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 0),
-                            const Text(
-                              'Knowledge Breaks Barriers',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Text(
-                  'Welcome back, ${widget.userName}!',
-                  style: GoogleFonts.cinzel(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                const SizedBox(height: 6),
-
-                Text(
-                  widget.studentId,
-                  style: GoogleFonts.openSans(
-                    fontSize: 15,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-
-                const SizedBox(height: 4),
-
-                Text(
-                  '${widget.course} • ${widget.semester}',
-                  style: const TextStyle(fontSize: 16, color: Colors.grey),
-                ),
-                const SizedBox(height: 24),
-
-                Text(
-                  'Academic Snapshot',
-                  style: GoogleFonts.poppins(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-
-                Wrap(
-                  spacing: 12,
-                  runSpacing: 12,
-                  children: [
-                    Container(
-                      width: 160,
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.blueGrey.shade100),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.15),
-                            blurRadius: 6,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Icon(Icons.school, color: Colors.indigo),
-                          const SizedBox(height: 10),
-                          Text(
-                            '8.42',
-                            style: GoogleFonts.poppins(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const Text('CGPA'),
-                        ],
-                      ),
-                    ),
-
-                    Container(
-                      width: 160,
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.blueGrey.shade100),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.15),
-                            blurRadius: 6,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Icon(Icons.percent, color: Colors.green),
-                          const SizedBox(height: 10),
-                          Text(
-                            '92%',
-                            style: GoogleFonts.poppins(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const Text('Attendance'),
-                        ],
-                      ),
-                    ),
-
-                    Container(
-                      width: 160,
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.blueGrey.shade100),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.15),
-                            blurRadius: 6,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Icon(Icons.credit_score, color: Colors.orange),
-                          const SizedBox(height: 10),
-                          Text(
-                            '24',
-                            style: GoogleFonts.poppins(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const Text('Credits'),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 24),
-
-                // Announcement
-                Card(
-                  color: const Color.fromARGB(255, 245, 243, 246),
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Campus Announcement',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 243, 138, 10),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Career Fair registration is now open. Secure your spot today!',
-                          style: GoogleFonts.openSans(fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                Text(
-                  'Quick Access',
-                  style: GoogleFonts.poppins(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 16),
-
-                // Quick Access Horizontal List
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      _buildQuickAccessCard(Icons.local_library, 'Library', () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LibraryScreen(),
-                          ),
-                        );
-                      }),
-                      const SizedBox(width: 20),
-                      _buildQuickAccessCard(Icons.map, 'Map', () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const CampusMapScreen(),
-                          ),
-                        );
-                      }),
-                      const SizedBox(width: 20),
-                      _buildQuickAccessCard(
-                        Icons.calendar_month,
-                        'Timetable',
-                        () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const TimetableScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(width: 20),
-                      _buildQuickAccessCard(Icons.restaurant, 'Food', () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Campus Food')),
-                        );
-                      }),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 32),
-
-                Text(
-                  'Upcoming Events',
-                  style: GoogleFonts.poppins(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      _buildEventCard(
-                        'assets/images/campus.jpg',
-                        'Career Fair',
-                        'Meet companies and explore opportunities.',
-                      ),
-
-                      const SizedBox(width: 16),
-
-                      _buildEventCard(
-                        'assets/images/sports.jpg',
-                        'Sports Day',
-                        'Annual university sports event.',
-                      ),
-
-                      const SizedBox(width: 16),
-
-                      _buildEventCard(
-                        'assets/images/techyy.jpg',
-                        'Tech Fest',
-                        'Technology, innovation and student projects.',
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 32),
-
-                Text(
-                  'Campus Highlights',
-                  style: GoogleFonts.poppins(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-                InkWell(
-                  borderRadius: BorderRadius.circular(20),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CampusHighlightsScreen(),
-                      ),
-                    );
-                  },
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
+          SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                // <-- Added missing Column here
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(24),
                     child: Stack(
                       children: [
                         Image.asset(
-                          'assets/images/IISc.jpg',
+                          'assets/images/campus.jpg',
                           width: double.infinity,
-                          height: 220,
+                          height: 280,
                           fit: BoxFit.cover,
                         ),
                         Container(
                           width: double.infinity,
-                          height: 220,
+                          height: 280,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               begin: Alignment.topCenter,
@@ -743,188 +407,529 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                           ),
                         ),
                         Positioned(
-                          left: 20,
-                          right: 20,
-                          bottom: 20,
+                          left: 24,
+                          right: 24,
+                          bottom: 18,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Life at CMR University',
-                                style: GoogleFonts.poppins(
+                              const Text(
+                                'CMR University',
+                                style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 24,
+                                  fontSize: 26,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(height: 6),
-                              Text(
-                                'Discover campus life, events, clubs and student activities.',
-                                style: GoogleFonts.openSans(
+                              const SizedBox(height: 0),
+                              const Text(
+                                'Knowledge Breaks Barriers',
+                                style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 16,
                                 ),
                               ),
-                              const SizedBox(height: 10),
                             ],
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
-
-                const SizedBox(height: 32),
-
-                Text(
-                  'Campus Services',
-                  style: GoogleFonts.poppins(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(height: 24),
+                  Text(
+                    'Welcome back, ${widget.userName}!',
+                    style: GoogleFonts.cinzel(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-
-                const SizedBox(height: 16),
-
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
+                  const SizedBox(height: 6),
+                  Text(
+                    widget.studentId,
+                    style: GoogleFonts.openSans(
+                      fontSize: 15,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '${widget.course} • ${widget.semester}',
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                  const SizedBox(height: 24),
+                  Text(
+                    'Academic Snapshot',
+                    style: GoogleFonts.poppins(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Wrap(
+                    spacing: 12,
+                    runSpacing: 12,
                     children: [
-                      _buildServiceCard(
-                        'assets/images/library.jpg',
-                        'Library',
-                        'Books, study spaces and resources',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LibraryScreen(),
+                      Container(
+                        width: 160,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.blueGrey.shade100),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.15),
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
-                          );
-                        },
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Icon(Icons.school, color: Colors.indigo),
+                            const SizedBox(height: 10),
+                            Text(
+                              '8.69',
+                              style: GoogleFonts.poppins(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Text('CGPA'),
+                          ],
+                        ),
                       ),
-
-                      const SizedBox(width: 16),
-
-                      _buildServiceCard(
-                        'assets/images/cafeteria.jpg',
-                        'Cafeteria',
-                        'Food and refreshments on campus',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CafeteriaScreen(),
+                      Container(
+                        width: 160,
+                        margin: const EdgeInsets.only(right: 4),
+                        padding: const EdgeInsets.all(16),
+                        alignment: Alignment.topLeft,
+                        constraints: const BoxConstraints(minHeight: 150),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.blueGrey.shade100),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.15),
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
-                          );
-                        },
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Icon(Icons.percent, color: Colors.green),
+                            const SizedBox(height: 10),
+                            Text(
+                              '92%',
+                              style: GoogleFonts.poppins(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Text('Attendance'),
+                          ],
+                        ),
                       ),
-
-                      const SizedBox(width: 16),
-
-                      _buildServiceCard(
-                        'assets/images/spo.jpg',
-                        'Sports',
-                        'Sports facilities and activities',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SportsScreen(),
+                      Container(
+                        width: 160,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.blueGrey.shade100),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.15),
+                              blurRadius: 6,
+                              offset: const Offset(0, 3),
                             ),
-                          );
-                        },
-                      ),
-
-                      const SizedBox(width: 16),
-
-                      _buildServiceCard(
-                        'assets/images/health.jpg',
-                        'Health',
-                        'Campus health and support',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HealthScreen(),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Icon(
+                              Icons.credit_score,
+                              color: Colors.orange,
                             ),
-                          );
-                        },
+                            const SizedBox(height: 10),
+                            Text(
+                              '24',
+                              style: GoogleFonts.poppins(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Text('Credits'),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ),
-                const SizedBox(height: 32),
+                  const SizedBox(height: 24),
+                  // Announcement Section changed on 29th Sep by Raj
 
-                Text(
-                  'Important Contacts',
-                  style: GoogleFonts.poppins(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 4),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 245, 243, 246),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.blueGrey.shade100),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.15),
+                          blurRadius: 6,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Campus Announcement',
+                            style: GoogleFonts.poppins(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Career Fair registration is now open.',
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          const Text(
+                            'Registration deadline: 15 October 2026',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Career Fair registration selected',
+                                    ),
+                                  ),
+                                );
+                              },
+                              icon: const Icon(Icons.app_registration),
+                              label: const Text('Register Now'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-
-                const SizedBox(height: 16),
-
-                Column(
-                  children: [
-                    _buildContactCard(
-                      Icons.admin_panel_settings,
-                      'University Administration',
-                      'Contact administration for general queries',
+                  const SizedBox(height: 24),
+                  Text(
+                    'Quick Access',
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                     ),
-
-                    const SizedBox(height: 12),
-
-                    _buildContactCard(
-                      Icons.school,
-                      'Academic Office',
-                      'For academic and examination related queries',
-                    ),
-
-                    const SizedBox(height: 12),
-
-                    _buildContactCard(
-                      Icons.support_agent,
-                      'Student Support',
-                      'Get help with student services',
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 32),
-
-                Text(
-                  'Latest Updates',
-                  style: GoogleFonts.poppins(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
                   ),
-                ),
-
-                const SizedBox(height: 16),
-
-                _buildUpdateCard(
-                  Icons.campaign,
-                  'Career Fair Registration',
-                  'Registration is now open for the upcoming career fair.',
-                ),
-
-                const SizedBox(height: 12),
-
-                _buildUpdateCard(
-                  Icons.event,
-                  'Sports Day',
-                  'Annual university sports day is coming soon.',
-                ),
-
-                const SizedBox(height: 12),
-
-                _buildUpdateCard(
-                  Icons.computer,
-                  'Tech Fest',
-                  'Student registrations for Tech Fest are now available.',
-                ),
-              ],
+                  const SizedBox(height: 16),
+                  // Quick Access Horizontal List
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        _buildQuickAccessCard(
+                          Icons.local_library,
+                          'Library',
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LibraryScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 20),
+                        _buildQuickAccessCard(Icons.map, 'Map', () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CampusMapScreen(),
+                            ),
+                          );
+                        }),
+                        const SizedBox(width: 20),
+                        _buildQuickAccessCard(
+                          Icons.calendar_month,
+                          'Timetable',
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const TimetableScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 20),
+                        _buildQuickAccessCard(Icons.restaurant, 'Food', () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Campus Food')),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Text(
+                    'Upcoming Events',
+                    style: GoogleFonts.poppins(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        _buildEventCard(
+                          'assets/images/campus.jpg',
+                          'Career Fair',
+                          'Meet companies and explore opportunities.',
+                        ),
+                        const SizedBox(width: 16),
+                        _buildEventCard(
+                          'assets/images/sports.jpg',
+                          'Sports Day',
+                          'Annual university sports event.',
+                        ),
+                        const SizedBox(width: 16),
+                        _buildEventCard(
+                          'assets/images/techyy.jpg',
+                          'Tech Fest',
+                          'Technology, innovation and student projects.',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Text(
+                    'Campus Highlights',
+                    style: GoogleFonts.poppins(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  InkWell(
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CampusHighlightsScreen(),
+                        ),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            'assets/images/IISc.jpg',
+                            width: double.infinity,
+                            height: 220,
+                            fit: BoxFit.cover,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 220,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Colors.transparent,
+                                  Colors.black.withOpacity(0.75),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            left: 20,
+                            right: 20,
+                            bottom: 20,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Life at CMR University',
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  'Discover campus life, events, clubs and student activities.',
+                                  style: GoogleFonts.openSans(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Text(
+                    'Campus Services',
+                    style: GoogleFonts.poppins(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        _buildServiceCard(
+                          'assets/images/library.jpg',
+                          'Library',
+                          'Books, study spaces and resources',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LibraryScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 16),
+                        _buildServiceCard(
+                          'assets/images/cafeteria.jpg',
+                          'Cafeteria',
+                          'Food and refreshments on campus',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CafeteriaScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 16),
+                        _buildServiceCard(
+                          'assets/images/spo.jpg',
+                          'Sports',
+                          'Sports facilities and activities',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SportsScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 16),
+                        _buildServiceCard(
+                          'assets/images/health.jpg',
+                          'Health',
+                          'Campus health and support',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HealthScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Text(
+                    'Important Contacts',
+                    style: GoogleFonts.poppins(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Column(
+                    children: [
+                      _buildContactCard(
+                        Icons.admin_panel_settings,
+                        'University Administration',
+                        'Contact administration for general queries',
+                      ),
+                      const SizedBox(height: 12),
+                      _buildContactCard(
+                        Icons.school,
+                        'Academic Office',
+                        'For academic and examination related queries',
+                      ),
+                      const SizedBox(height: 12),
+                      _buildContactCard(
+                        Icons.support_agent,
+                        'Student Support',
+                        'Get help with student services',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  Text(
+                    'Latest Updates',
+                    style: GoogleFonts.poppins(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  _buildUpdateCard(
+                    Icons.campaign,
+                    'Career Fair Registration',
+                    'Registration is now open for the upcoming career fair.',
+                  ),
+                  const SizedBox(height: 12),
+                  _buildUpdateCard(
+                    Icons.event,
+                    'Sports Day',
+                    'Annual university sports day is coming soon.',
+                  ),
+                  const SizedBox(height: 12),
+                  _buildUpdateCard(
+                    Icons.computer,
+                    'Tech Fest',
+                    'Student registrations for Tech Fest are now available.',
+                  ),
+                ],
+              ),
             ),
           ),
 
@@ -935,6 +940,7 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
           const ProfileScreen(),
         ],
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -1747,7 +1753,7 @@ class ActivitiesScreen extends StatelessWidget {
   }
 }
 
-class ProfileScreen extends StatelessWidget {
+/*class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
@@ -1769,6 +1775,349 @@ class ProfileScreen extends StatelessWidget {
           Text('Computer Science'),
           Text('Semester 5'),
         ],
+      ),
+    );
+  }
+}
+*/
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // PROFILE HEADER
+            Text(
+              'STUDENT PROFILE',
+              style: GoogleFonts.poppins(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: Colors.red.shade700,
+                letterSpacing: 1.5,
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
+            Text(
+              'Your academic space.',
+              style: GoogleFonts.poppins(
+                fontSize: 30,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+
+            const SizedBox(height: 4),
+
+            Text(
+              'Profile, academic overview and student activity.',
+              style: GoogleFonts.poppins(
+                fontSize: 15,
+                color: Colors.grey.shade600,
+              ),
+            ),
+
+            const SizedBox(height: 28),
+
+            // MAIN PROFILE AREA
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final bool wideScreen = constraints.maxWidth >= 850;
+
+                final profileCard = Container(
+                  width: wideScreen ? 390 : double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(24),
+                    border: Border.all(color: Colors.grey.shade200),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.12),
+                        blurRadius: 12,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      // RED PROFILE HEADER
+                      Container(
+                        width: double.infinity,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          color: Colors.red.shade800,
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(24),
+                            topRight: Radius.circular(24),
+                          ),
+                        ),
+                      ),
+
+                      // PROFILE PHOTO
+                      Transform.translate(
+                        offset: const Offset(0, -55),
+                        child: Container(
+                          width: 120,
+                          height: 120,
+                          padding: const EdgeInsets.all(5),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                          ),
+                          child: ClipOval(
+                            child: Image.asset(
+                              'assets/images/profile.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      Transform.translate(
+                        offset: const Offset(0, -35),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Column(
+                            children: [
+                              Text(
+                                'Yaduraj Siddarth',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.cinzel(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+
+                              const SizedBox(height: 4),
+
+                              Text(
+                                'Computer Science',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.red.shade700,
+                                ),
+                              ),
+
+                              const SizedBox(height: 4),
+
+                              Text(
+                                'Semester 5 • Student ID CMR2026CSE001',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 13,
+                                  color: Colors.grey.shade600,
+                                ),
+                              ),
+
+                              const SizedBox(height: 20),
+
+                              Divider(color: Colors.grey.shade300),
+
+                              const SizedBox(height: 12),
+
+                              _profileInfoRow(
+                                Icons.email_outlined,
+                                'yadurajs@uni.edu.in',
+                              ),
+
+                              const SizedBox(height: 14),
+
+                              _profileInfoRow(
+                                Icons.school_outlined,
+                                'CMR University',
+                              ),
+
+                              const SizedBox(height: 14),
+
+                              _profileInfoRow(
+                                Icons.location_on_outlined,
+                                'Bengaluru, Karnataka',
+                              ),
+
+                              const SizedBox(height: 20),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+
+                final cards = Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _profileActionCard(
+                            Icons.description_outlined,
+                            'Transcript',
+                            'Academic record',
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: _profileActionCard(
+                            Icons.verified_outlined,
+                            'Academic Status',
+                            'Current standing',
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _profileActionCard(
+                            Icons.emoji_events_outlined,
+                            'Achievements',
+                            'Awards & certificates',
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: _profileActionCard(
+                            Icons.code_outlined,
+                            'Projects',
+                            'Academic projects',
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _profileActionCard(
+                            Icons.account_balance_wallet_outlined,
+                            'Fee Status',
+                            'Payments & balances',
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: _profileActionCard(
+                            Icons.groups_outlined,
+                            'Student Activities',
+                            'Campus participation',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+
+                if (wideScreen) {
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      profileCard,
+                      const SizedBox(width: 28),
+                      Expanded(child: cards),
+                    ],
+                  );
+                }
+
+                return Column(
+                  children: [profileCard, const SizedBox(height: 24), cards],
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _profileInfoRow(IconData icon, String text) {
+    return Row(
+      children: [
+        Icon(icon, size: 20, color: Colors.grey.shade600),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(
+            text,
+            style: GoogleFonts.poppins(
+              fontSize: 13,
+              color: Colors.grey.shade700,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _profileActionCard(IconData icon, String title, String subtitle) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(18),
+      onTap: () {},
+      child: Container(
+        constraints: const BoxConstraints(minHeight: 120),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: Colors.grey.shade200),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.08),
+              blurRadius: 8,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.red.shade50,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Icon(icon, color: Colors.red.shade700, size: 27),
+            ),
+
+            const SizedBox(width: 14),
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    subtitle,
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.grey.shade600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            Icon(Icons.arrow_forward_ios, size: 15, color: Colors.red.shade700),
+          ],
+        ),
       ),
     );
   }
