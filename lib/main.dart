@@ -318,15 +318,19 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
             ),
           ),
 
-          TextButton.icon(
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
+          Builder(
+            builder: (context) {
+              return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  color: Color.fromARGB(255, 2, 3, 37),
+                ),
+                tooltip: 'Menu',
+              );
             },
-            icon: const Icon(Icons.menu, color: Color.fromARGB(255, 7, 1, 37)),
-            label: const Text(
-              'Menu',
-              style: TextStyle(color: Color.fromARGB(255, 2, 3, 37)),
-            ),
           ),
 
           const SizedBox(width: 12),
