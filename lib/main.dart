@@ -343,32 +343,46 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
             const UserAccountsDrawerHeader(
               accountName: Text('Yaduraj Siddarth'),
               accountEmail: Text('yaduraj@university.edu'),
-              currentAccountPicture: CircleAvatar(
+              currentAccountPicture: const CircleAvatar(
                 backgroundColor: Colors.white,
-                child: Text(
-                  'YS',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    color: Color.fromARGB(255, 2, 9, 54),
-                  ),
-                ),
+                backgroundImage: AssetImage('assets/images/p3.jpg'),
               ),
               decoration: BoxDecoration(color: Color.fromARGB(255, 175, 0, 0)),
             ),
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text('My Profile'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  _selectedIndex = 2;
+                });
+              },
             ),
             ListTile(
               leading: const Icon(Icons.map),
               title: const Text('Campus Map'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CampusMapScreen(),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Settings will be available soon.'),
+                  ),
+                );
+              },
             ),
           ],
         ),
