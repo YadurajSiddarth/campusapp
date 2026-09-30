@@ -263,11 +263,6 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
   int _selectedIndex = 0;
 
   // List of titles to dynamically update the AppBar based on the selected tab
-  final List<String> _appBarTitles = [
-    'CMR University Student Hub',
-    'Activities',
-    'My Profile',
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -345,9 +340,11 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
               accountEmail: Text('yaduraj@university.edu'),
               currentAccountPicture: const CircleAvatar(
                 backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/images/p3.jpg'),
+                backgroundImage: AssetImage('assets/images/p.jpeg'),
               ),
-              decoration: BoxDecoration(color: Color.fromARGB(255, 175, 0, 0)),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 169, 226, 200),
+              ),
             ),
             ListTile(
               leading: const Icon(Icons.person),
