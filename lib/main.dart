@@ -1,20 +1,98 @@
+// lib/main.dart
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'models/campus_service.dart';
+import 'routes/app_routes.dart';
+
+import 'screens/services_screen.dart';
+import 'screens/service_detail_screen.dart';
+import 'screens/events_screen.dart';
+import 'screens/event_detail_screen.dart';
+import 'screens/unknown_route_screen.dart';
 import 'screens/campus_service_request_screen.dart';
 
 void main() {
-  runApp(
-    const MaterialApp(
+  runApp(const CampusApp());
+}
+
+class CampusApp extends StatelessWidget {
+  const CampusApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'CampusConnect',
       debugShowCheckedModeBanner: false,
-      home: CampusHomeScreen(
-        userName: 'Yaduraj Siddarth',
-        studentId: '24BBTCS307',
-        course: 'Computer Science',
-        semester: 'Semester 5',
+
+      // Consistent theme applied across every route.
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF174A7C),
+          primary: const Color(0xFF174A7C),
+          secondary: const Color(0xFFC62828),
+          surface: const Color(0xFFF3F7FA),
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF3F7FA),
+        textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-    ),
-  );
+
+      // Dashboard is the first route at the bottom of the stack.
+      initialRoute: AppRoutes.home,
+
+      // Named routes for static screens.
+      routes: {
+        AppRoutes.home: (_) => const CampusHomeScreen(
+          userName: 'Yaduraj Siddarth',
+          studentId: '24BBTCS307',
+          course: 'Computer Science',
+          semester: 'Semester 5',
+        ),
+        AppRoutes.timetable: (_) => const TimetableScreen(),
+        AppRoutes.services: (_) => const ServicesScreen(),
+        AppRoutes.events: (_) => const EventsScreen(),
+        AppRoutes.profile: (_) => const ProfileScreen(),
+        AppRoutes.campusMap: (_) => const CampusMapScreen(),
+        AppRoutes.highlights: (_) => const CampusHighlightsScreen(),
+        AppRoutes.library: (_) => const LibraryScreen(),
+        AppRoutes.cafeteria: (_) => const CafeteriaScreen(),
+        AppRoutes.sports: (_) => const SportsScreen(),
+        AppRoutes.health: (_) => const HealthScreen(),
+        AppRoutes.serviceRequest: (_) => const CampusServiceRequestScreen(),
+      },
+
+      // Routes that need arguments are generated here.
+      onGenerateRoute: (settings) {
+        if (settings.name == AppRoutes.serviceDetail) {
+          final service = settings.arguments as CampusService;
+          return MaterialPageRoute(
+            builder: (_) => ServiceDetailScreen(service: service),
+            settings: settings,
+          );
+        }
+
+        if (settings.name == AppRoutes.eventDetail) {
+          final event = settings.arguments as CampusEvent;
+          return MaterialPageRoute(
+            builder: (_) => EventDetailScreen(event: event),
+            settings: settings,
+          );
+        }
+
+        return null;
+      },
+
+      // Fallback for unregistered routes — shows the offending route name.
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (_) => UnknownRouteScreen(routeName: settings.name),
+          settings: settings,
+        );
+      },
+    );
+  }
 }
 
 class Student {
