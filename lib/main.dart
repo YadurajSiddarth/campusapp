@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'screens/campus_service_request_screen.dart';
+
 void main() {
   runApp(
     const MaterialApp(
@@ -335,32 +337,34 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const UserAccountsDrawerHeader(
-              accountName: Text('Yaduraj Siddarth'),
-              accountEmail: Text('yaduraj@university.edu'),
+            UserAccountsDrawerHeader(
+              accountName: const Text('Yaduraj Siddarth'),
+              accountEmail: const Text('yadurajs@uni.edu.in'),
               currentAccountPicture: const CircleAvatar(
                 backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/images/p.jpeg'),
+                backgroundImage: AssetImage('assets/images/p3.jpg'),
               ),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 169, 226, 200),
-              ),
+              decoration: BoxDecoration(color: Colors.red.shade800),
             ),
+
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text('My Profile'),
               onTap: () {
                 Navigator.pop(context);
+
                 setState(() {
                   _selectedIndex = 2;
                 });
               },
             ),
+
             ListTile(
               leading: const Icon(Icons.map),
               title: const Text('Campus Map'),
               onTap: () {
                 Navigator.pop(context);
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -369,11 +373,28 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                 );
               },
             ),
+
+            ListTile(
+              leading: const Icon(Icons.assignment),
+              title: const Text('Service Request'),
+              onTap: () {
+                Navigator.pop(context);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CampusServiceRequestScreen(),
+                  ),
+                );
+              },
+            ),
+
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () {
                 Navigator.pop(context);
+
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Settings will be available soon.'),
