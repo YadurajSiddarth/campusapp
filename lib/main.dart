@@ -13,7 +13,15 @@ import 'screens/event_detail_screen.dart';
 import 'screens/unknown_route_screen.dart';
 import 'screens/campus_service_request_screen.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const CampusApp());
 }
 
