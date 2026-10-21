@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CampusServiceRequestScreen extends StatefulWidget {
   const CampusServiceRequestScreen({super.key});
@@ -65,7 +67,7 @@ class _CampusServiceRequestScreenState
     }
   }
 
-  void _submitForm() {
+  Future<void> _submitForm() async {
     FocusScope.of(context).unfocus();
 
     if (!_formKey.currentState!.validate()) {
@@ -83,9 +85,53 @@ class _CampusServiceRequestScreenState
       return;
     }
 
-    _formKey.currentState!.save();
+    if (selectedDate == null ||
+        selectedService == null ||
+        selectedUrgency == null ||
+        selectedContact == null) {
+      return;
+    }
 
-    _showSuccessDialog();
+    try {
+      // Sign in anonymously if no Firebase user exists yet.
+      var user = FirebaseAuth.instance.currentUser;
+      user ??= (await FirebaseAuth.instance.signInAnonymously()).user;
+
+      if (user == null) {
+        throw Exception('Could not establish a Firebase user session.');
+      }
+
+      final requestData = {
+        'studentName': nameController.text.trim(),
+        'studentId': studentIdController.text.trim(),
+        'email': emailController.text.trim(),
+        'phone': phoneController.text.trim(),
+        'service': selectedService,
+        'subject': subjectController.text.trim(),
+        'details': detailsController.text.trim(),
+        'urgency': selectedUrgency,
+        'preferredContact': selectedContact,
+        'preferredDate': Timestamp.fromDate(selectedDate!),
+        'ownerUid': user.uid,
+        'status': 'Pending',
+        'createdAt': FieldValue.serverTimestamp(),
+      };
+
+      final doc = await FirebaseFirestore.instance
+          .collection('serviceRequests')
+          .add(requestData);
+
+      if (!mounted) return;
+
+      // Use the real Firestore document ID as the reference.
+      await _showSuccessDialog(doc.id);
+    } catch (error) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Could not save request: $error')));
+    }
   }
 
   void _resetForm() {
@@ -110,7 +156,7 @@ class _CampusServiceRequestScreenState
         .showSnackBar(const SnackBar(content: Text('Form has been reset.')));
   }
 
-  void _showSuccessDialog() {
+  Future<void> _showSuccessDialog(String docId) async {
     final formattedDate =
         '${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}';
 
@@ -141,7 +187,7 @@ class _CampusServiceRequestScreenState
                   ),
                 ),
                 const SizedBox(height: 4),
-                const Text('CSR-2026-001'),
+                Text('CSR-2026-$docId'),
                 const SizedBox(height: 14),
                 Text(
                   'Service',
