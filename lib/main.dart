@@ -16,6 +16,7 @@ import 'screens/campus_service_request_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
+import 'screens/my_service_requests_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,6 +70,7 @@ class CampusApp extends StatelessWidget {
         AppRoutes.sports: (_) => const SportsScreen(),
         AppRoutes.health: (_) => const HealthScreen(),
         AppRoutes.serviceRequest: (_) => const CampusServiceRequestScreen(),
+        AppRoutes.myServiceRequests: (_) => const MyServiceRequestsScreen(),
       },
 
       // Routes that need arguments are generated here.
@@ -813,6 +815,17 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                             const SnackBar(content: Text('Campus Food')),
                           );
                         }),
+                        const SizedBox(width: 20),
+                        _buildQuickAccessCard(
+                          Icons.assignment_outlined,
+                          'My Requests',
+                          () {
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.myServiceRequests,
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),

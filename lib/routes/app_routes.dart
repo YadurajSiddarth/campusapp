@@ -19,4 +19,5 @@ class AppRoutes {
   static const String health = '/health';
   static const String serviceRequest = '/service-request';
   static const String unknown = '/unknown';
+  static const String myServiceRequests = '/my-service-requests';
 }
