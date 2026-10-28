@@ -9,6 +9,7 @@ class AppRoutes {
   static const String services = '/services';
   static const String serviceDetail = '/service-detail';
   static const String events = '/events';
+  static const String announcements = '/announcements';
   static const String eventDetail = '/event-detail';
   static const String profile = '/profile';
   static const String campusMap = '/campus-map';

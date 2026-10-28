@@ -12,6 +12,7 @@ import 'screens/events_screen.dart';
 import 'screens/event_detail_screen.dart';
 import 'screens/unknown_route_screen.dart';
 import 'screens/campus_service_request_screen.dart';
+import 'screens/announcement_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
@@ -62,6 +63,7 @@ class CampusApp extends StatelessWidget {
         AppRoutes.timetable: (_) => const TimetableScreen(),
         AppRoutes.services: (_) => const ServicesScreen(),
         AppRoutes.events: (_) => const EventsScreen(),
+        AppRoutes.announcements: (_) => const AnnouncementsScreen(),
         AppRoutes.profile: (_) => const ProfileScreen(),
         AppRoutes.campusMap: (_) => const CampusMapScreen(),
         AppRoutes.highlights: (_) => const CampusHighlightsScreen(),
@@ -823,6 +825,17 @@ class _CampusHomeScreenState extends State<CampusHomeScreen> {
                             Navigator.pushNamed(
                               context,
                               AppRoutes.myServiceRequests,
+                            );
+                          },
+                        ),
+                        const SizedBox(width: 20),
+                        _buildQuickAccessCard(
+                          Icons.campaign_outlined,
+                          'Announcements',
+                          () {
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.announcements,
                             );
                           },
                         ),
